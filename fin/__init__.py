@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from flask import render_template
 
 def create_app(test_config =None):
         # create & config the app
@@ -18,9 +19,9 @@ def create_app(test_config =None):
         except:
                 pass
 
-        @app.route('/hello')
+        @app.route('/home')
         def hello():
-                return 'HELLO PAGE'
+                return render_template('home.html')
 
         from . import db
         db.init_app(app)
