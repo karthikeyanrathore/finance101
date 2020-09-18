@@ -7,13 +7,26 @@
 - Werkzeug 1.0.1
 
 ### install (https://flask.palletsprojects.com/en/1.1.x/installation/)
+Mac or Linux
 - fork repo
 - cd finance101
 - python3 -m venv venv 
 - . venv/bin/activate
 - sudo pip3 install Flask
 
-
+Windows
+- cmd ( cd Dekstop)
+- git colne https://github.com/karthikeyanrathore/finance101
+- cd finance101
+-  py -3 -m venv venv 
+- venv\Scripts\activate
+- pip3 install flask
+- set FLASK_APP=fin
+- set FLASK_ENV=development
+- #before running our application .. initiate the datbase
+- flask initdb (empty db)
+- flask run 
+- open  http://127.0.0.1:5000/home
 ### Contribute (https://opensource.com/article/19/7/create-pull-request-github)
 
 
