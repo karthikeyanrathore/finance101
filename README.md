@@ -1,12 +1,13 @@
 
 # finance101
 
-### requirements
+# Requirements
 - Python 3.6.9
 - Flask 1.1.2
 - Werkzeug 1.0.1
 
-### install (https://flask.palletsprojects.com/en/1.1.x/installation/)
+# Install [Flask](https://flask.palletsprojects.com/en/1.1.x/installation/)
+
 Mac or Linux
 - fork repo
 - cd finance101
@@ -18,7 +19,7 @@ Windows
 - cmd ( cd Dekstop)
 - git colne https://github.com/karthikeyanrathore/finance101
 - cd finance101
--  py -3 -m venv venv 
+-  py -3 -m venv venv (creating an V.Env && only created one Time)
 - venv\Scripts\activate
 - pip3 install flask
 - set FLASK_APP=fin
@@ -27,6 +28,9 @@ Windows
 - flask initdb (empty db)
 - flask run 
 - open  http://127.0.0.1:5000/home
-### Contribute (https://opensource.com/article/19/7/create-pull-request-github)
+
+# Contribue
+
+
 
 
