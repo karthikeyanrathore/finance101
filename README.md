@@ -24,7 +24,7 @@ Windows
 - pip3 install flask
 - set FLASK_APP=fin
 - set FLASK_ENV=development
-- #before running our application .. initiate the database
+-  *before running our application .. initiate the database*
 - flask initdb (empty db)
 - flask run 
 - open  http://127.0.0.1:5000/home
