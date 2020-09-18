@@ -17,7 +17,7 @@ Mac or Linux
 
 Windows
 - cmd ( cd Dekstop)
-- git clone https://github.com/karthikeyanrathore/finance101
+- git clone https://github.com/QuaranTEAM-code/finance101
 - cd finance101
 -  py -3 -m venv venv (creating an V.Env && only created one Time)
 - venv\Scripts\activate
@@ -29,7 +29,7 @@ Windows
 - flask run 
 - open  http://127.0.0.1:5000/home
 
-# Contribue
+# Contribute
 - git add .
 - git commit "New Feature Added"
 - git push
