@@ -85,7 +85,7 @@ def parent_logout():
     session.clear()
     return redirect(url_for('index'))
 
-def login_required(view):
+def parent_login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.parent is None:
@@ -178,10 +178,10 @@ def child_logout():
     session.clear()
     return redirect(url_for('index'))
 
-def login_required(view):
+def child_login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if g.parent is None:
+        if g.child is None:
             return redirect(url_for('auth.child_login'))
 
         return view(**kwargs)
