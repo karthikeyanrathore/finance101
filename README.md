@@ -17,14 +17,14 @@ Mac or Linux
 
 Windows
 - cmd ( cd Dekstop)
-- git colne https://github.com/karthikeyanrathore/finance101
+- git clone https://github.com/karthikeyanrathore/finance101
 - cd finance101
 -  py -3 -m venv venv (creating an V.Env && only created one Time)
 - venv\Scripts\activate
 - pip3 install flask
 - set FLASK_APP=fin
 - set FLASK_ENV=development
-- #before running our application .. initiate the datbase
+- #before running our application .. initiate the database
 - flask initdb (empty db)
 - flask run 
 - open  http://127.0.0.1:5000/home
