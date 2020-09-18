@@ -9,15 +9,17 @@
 # Install [Flask](https://flask.palletsprojects.com/en/1.1.x/installation/)
 
 Mac or Linux
-- fork repo
+- fork repo (https://github.com/QuaranTEAM-code/finance101)
+- git clone https://github.com/{username}/finance101
 - cd finance101
 - python3 -m venv venv 
 - . venv/bin/activate
 - sudo pip3 install Flask
 
 Windows
+- fork repo (https://github.com/QuaranTEAM-code/finance101)
 - cmd ( cd Dekstop)
-- git clone https://github.com/karthikeyanrathore/finance101
+- git clone https://github.com/{username}/finance101
 - cd finance101
 -  py -3 -m venv venv (creating an V.Env && only created one Time)
 - venv\Scripts\activate
