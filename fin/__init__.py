@@ -1,9 +1,6 @@
 import os
 from flask import Flask
-<<<<<<< HEAD
 
-=======
->>>>>>> 3a452056ab996daef6836f956657c8ffba796133
 from flask import render_template
 
 def create_app(test_config =None):
@@ -30,11 +27,11 @@ def create_app(test_config =None):
         from . import db
         db.init_app(app)
 
-<<<<<<< HEAD
+
         from . import auth 
-=======
+
         from . import auth
->>>>>>> 3a452056ab996daef6836f956657c8ffba796133
+
         app.register_blueprint(auth.bp)
 
         

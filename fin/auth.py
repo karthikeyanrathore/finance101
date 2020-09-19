@@ -1,18 +1,15 @@
 import functools
-<<<<<<< HEAD
+
 import sys
 import secret
-=======
->>>>>>> 3a452056ab996daef6836f956657c8ffba796133
+
 
 from flask import ( Blueprint ,flash , g ,  redirect , render_template  ,  request , session ,url_for)
 from werkzeug.security import check_password_hash , generate_password_hash
 
-<<<<<<< HEAD
+
 import random , datetime , smtplib
-    
-=======
->>>>>>> 3a452056ab996daef6836f956657c8ffba796133
+
 from fin.db import get_db
 bp  = Blueprint("auth" ,__name__, url_prefix= "/auth")
 
@@ -164,11 +161,11 @@ def child_login():
         if error is None:
             session.clear()
             session['child_id'] = child['child_id']
-<<<<<<< HEAD
+
             return render_template('child_index.html')
-=======
+
             return redirect(url_for('index'))
->>>>>>> 3a452056ab996daef6836f956657c8ffba796133
+
 
         flash(error)
 
@@ -201,7 +198,6 @@ def child_login_required(view):
         return view(**kwargs)
 
     return wrapped_view
-<<<<<<< HEAD
 
 
 # -----------#
@@ -315,5 +311,3 @@ def update_child_passw():
 
 
 
-=======
->>>>>>> 3a452056ab996daef6836f956657c8ffba796133
