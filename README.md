@@ -37,7 +37,7 @@ Windows
 
 # Contribute
 - git add {new code added in file .file_name}
-- git commit "New Feature Added"
+- git commit -m "New Feature Added"
 - git push
 - create a pull request
 
