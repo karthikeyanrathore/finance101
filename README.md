@@ -1,5 +1,5 @@
 
-# finance101
+# ~finance101~ POCKET SENSE
 
 # Requirements
 - Python 3.6.9
@@ -15,6 +15,10 @@ Mac or Linux
 - python3 -m venv venv 
 - . venv/bin/activate
 - sudo pip3 install Flask
+- export FLASK_APP=fin
+- export FLASK_ENV=development
+- flask initdb
+- flask run
 
 Windows
 - fork repo (https://github.com/QuaranTEAM-code/finance101)
