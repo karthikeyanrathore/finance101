@@ -1,8 +1,12 @@
 import functools
+import sys
+import secret
 
 from flask import ( Blueprint ,flash , g ,  redirect , render_template  ,  request , session ,url_for)
 from werkzeug.security import check_password_hash , generate_password_hash
 
+import random , datetime , smtplib
+    
 from fin.db import get_db
 bp  = Blueprint("auth" ,__name__, url_prefix= "/auth")
 
@@ -154,7 +158,7 @@ def child_login():
         if error is None:
             session.clear()
             session['child_id'] = child['child_id']
-            return redirect(url_for('index'))
+            return render_template('child_index.html')
 
         flash(error)
 
@@ -187,3 +191,116 @@ def child_login_required(view):
         return view(**kwargs)
 
     return wrapped_view
+
+
+# -----------#
+
+
+def check(n):
+    if((n) == (z)) :  return True
+    return False
+
+def gen_otp(email_child):
+    b = 6
+    z = ""
+    for i in range(b):
+            z = z + str(random.randrange(1,10))
+
+    s = smtplib.SMTP("smtp.gmail.com",587)
+    s.starttls()
+
+    s.login(secret.email,secret.password)
+    
+    #message = "HEYY YOUR OTP : {}".format(z);
+
+
+    s.sendmail(secret.email, email_child,  z)
+    return z
+
+
+count =0
+
+@bp.route('/child_email_required' , methods =('GET' , 'POST'))
+def child_email_required():
+    if request.method == 'POST':
+        error = None
+        global child_email 
+        global child_username
+        child_username = request.form['child_username']
+        child_email = request.form['child_email']
+        db = get_db()
+        child = db.execute('SELECT * FROM child WHERE child_username =?', (child_username,)).fetchone()
+        if child is None :
+             error = 'Incorrect Username'
+
+        global z 
+        z = gen_otp(child_email)
+
+        return redirect(url_for('auth.child_forget_passw'))
+    
+    return render_template('auth/child_email_required.html')
+
+
+
+@bp.route('/child_forget_passw' , methods =('GET' , 'POST'))
+def child_forget_passw():
+    if request.method == 'POST':
+        child_otp = request.form['child_otp']
+        if(check(child_otp)):
+            return redirect(url_for('auth.update_child_passw'))
+        else :
+            global count
+            if count <= 4:
+                count = count + 1
+                
+                child_forget_passw()
+            else :
+                return redirect(url_for('auth.child_login'))
+    
+    return render_template('auth/child_forget_passw.html')
+
+@bp.route('/update_child_passw' , methods =('GET' , 'POST'))
+def update_child_passw():
+    if request.method == 'POST':
+        new_passw  = request.form['new_passw']
+        confirm_passw = request.form['confirm_passw']
+        db = get_db()
+        error = None
+
+        if not new_passw:
+            error = 'Password  is required.'
+        if new_passw  != confirm_passw:
+            error = 'Password do not match'
+
+        else:
+            db.execute(
+                'UPDATE child SET child_password = ?'
+                ' WHERE child_username = ?',
+                (generate_password_hash(confirm_passw) , child_username)
+            )
+            db.commit()
+            return render_template('child_index.html')
+
+    return render_template('auth/update_child_passw.html')
+    
+
+
+
+
+
+
+        
+
+
+
+            
+
+
+
+
+
+
+
+
+
+

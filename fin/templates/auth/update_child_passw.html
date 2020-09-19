@@ -1,0 +1,14 @@
+{% extends 'update_child_passw_base.html' %}
+
+
+{% block content %}
+  <form method="post">
+    <label for="new_passw">New Password</label>
+    <input name="new_passw" id="new_passw" required>
+    
+    <label for="confirm_passw">Old Password</label>
+    <input name="confirm_passw" id="confirm_passw" required>
+
+    <input type="submit" value="OK">
+  </form>
+{% endblock %}
