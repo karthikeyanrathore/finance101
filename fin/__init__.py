@@ -21,14 +21,13 @@ def create_app(test_config =None):
                 pass
 
         @app.route('/home')
-        def hello():
+        def home():
                 return render_template('home.html')
 
         from . import db
         db.init_app(app)
 
 
-        from . import auth 
 
         from . import auth
 

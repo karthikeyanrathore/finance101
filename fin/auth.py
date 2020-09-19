@@ -164,7 +164,6 @@ def child_login():
 
             return render_template('child_index.html')
 
-            return redirect(url_for('index'))
 
 
         flash(error)
@@ -243,7 +242,12 @@ def child_email_required():
         global z 
         z = gen_otp(child_email)
 
+        flash(error)
+
         return redirect(url_for('auth.child_forget_passw'))
+        
+       
+
     
     return render_template('auth/child_email_required.html')
 
@@ -287,6 +291,8 @@ def update_child_passw():
             )
             db.commit()
             return render_template('child_index.html')
+        
+        flash(error)
 
     return render_template('auth/update_child_passw.html')
     
