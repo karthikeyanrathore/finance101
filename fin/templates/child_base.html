@@ -7,11 +7,17 @@
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.child_logout') }}">Log Out</a>
+<<<<<<< HEAD
     {% else %}      
       <li><a href="{{ url_for('auth.child_register') }}">Register</a>
       <li><a href="{{ url_for('auth.child_login') }}">Log In</a>
       <li><a href="{{ url_for('auth.child_email_required') }}">Forget Password</a>
 
+=======
+    {% else %}
+      <li><a href="{{ url_for('auth.child_register') }}">Register</a>
+      <li><a href="{{ url_for('auth.child_login') }}">Log In</a>
+>>>>>>> 3a452056ab996daef6836f956657c8ffba796133
     {% endif %}
   </ul>
 </nav>
