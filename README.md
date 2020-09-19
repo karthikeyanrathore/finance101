@@ -31,11 +31,7 @@ Windows
 - flask run 
 - open  http://127.0.0.1:5000/home
 
-<<<<<<< HEAD
-# Contribue
-=======
 # Contribute
->>>>>>> 3a452056ab996daef6836f956657c8ffba796133
 - git add .
 - git commit "New Feature Added"
 - git push
