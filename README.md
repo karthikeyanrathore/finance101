@@ -8,7 +8,7 @@
 
 # Install [Flask](https://flask.palletsprojects.com/en/1.1.x/installation/)
 
-Mac or Linux
+**Mac or Linux**
 - fork repo (https://github.com/QuaranTEAM-code/finance101)
 - git clone https://github.com/{username}/finance101
 - cd finance101
@@ -20,8 +20,9 @@ Mac or Linux
 - flask initdb
 - flask run
 
-Windows
-- fork repo (https://github.com/QuaranTEAM-code/finance101)
+**Windows**
+
+  fork repo (https://github.com/QuaranTEAM-code/finance101)
 - cmd ( cd Dekstop)
 - git clone https://github.com/{username}/finance101
 - cd finance101
@@ -34,6 +35,7 @@ Windows
 - flask initdb (empty db)
 - flask run 
 - open  http://127.0.0.1:5000/home
+
 
 
 # Update (First Time)
