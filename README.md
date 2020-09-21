@@ -35,6 +35,15 @@ Windows
 - flask run 
 - open  http://127.0.0.1:5000/home
 
+
+# Update
+- git remote -v
+- git remote add upstream https://github.com/QuaranTEAM-code/finance101
+- git fetch upstream
+- git checkout master
+- git merge upstream/master
+
+
 # Contribute
 - git add {new code added in file .file_name}
 - git commit -m "New Feature Added"
