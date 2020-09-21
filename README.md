@@ -25,7 +25,7 @@ Windows
 - cmd ( cd Dekstop)
 - git clone https://github.com/{username}/finance101
 - cd finance101
--  py -3 -m venv venv (creating an V.Env && only created one Time)
+-  py -3 -m venv venv (creating an V.Env && only created one Time)(single time)
 - venv\Scripts\activate
 - pip3 install flask
 - set FLASK_APP=fin
@@ -38,7 +38,7 @@ Windows
 
 # Update
 - git remote -v
-- git remote add upstream https://github.com/QuaranTEAM-code/finance101
+- git remote add upstream https://github.com/QuaranTEAM-code/finance101 (single time)
 - git fetch upstream
 - git checkout master
 - git merge upstream/master
