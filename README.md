@@ -36,6 +36,53 @@
 - open  http://127.0.0.1:5000/home
 
 
+# Structure 
+```
+   .
+  ├── fin
+  │   ├── auth.py
+  │   ├── db.py
+  │   ├── __init__.py
+  │   ├── schema.sql
+  │   ├── static
+  │   │   └── style.css
+  │   ├── templates
+  │   │   ├── auth
+  │   │   │   ├── child_email_required.html
+  │   │   │   ├── child_forget_passw.html
+  │   │   │   ├── child_login.html
+  │   │   │   ├── child_register.html
+  │   │   │   ├── parent_login.html
+  │   │   │   ├── parent_register.html
+  │   │   │   └── update_child_passw.html
+  │   │   ├── base.html
+  │   │   ├── child_base.html
+  │   │   ├── child_index.html
+  │   │   ├── home.html
+  │   │   ├── parent_index.html
+  │   │   └── update_child_passw_base.html   
+  ├── instance
+  │   └── fin.sqlite
+  ├── PocketSense1
+  │   ├── css
+  │   │   └── styles.css
+  │   ├── index.html
+  │   └── Login-Register
+  │       ├── cRegister.html
+  │       ├── css
+  │       │   ├── main.css
+  │       │   └── util.css
+  │       ├── index.html
+  │       ├── pLogin.html
+  │       └── pRegister.html
+  ├── Procfile
+  ├── __pycache__
+  │   └── secret.cpython-36.pyc
+  ├── README.md
+  ├── requirements.txt
+  └── secret.py
+
+  ```
 
 # Update (First Time)
 - git remote -v
