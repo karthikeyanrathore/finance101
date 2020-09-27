@@ -68,8 +68,7 @@ def parent_login():
         if error is None:
             session.clear()
             session['parent_id'] = parent['parent_id']
-            return redirect(url_for('index'))
-
+            return render_template('parent_index.html')
         flash(error)
 
     return render_template('auth/parent_login.html')
@@ -199,7 +198,7 @@ def child_login_required(view):
     return wrapped_view
 
 
-# -----------#
+# 19.09.2020
 
 
 def check(n):
@@ -217,14 +216,14 @@ def gen_otp(email_child):
 
     s.login(secret.email,secret.password)
     
-    #message = "HEYY YOUR OTP : {}".format(z);
+    # message = "HEYY YOUR OTP : {}".format(z);
 
 
     s.sendmail(secret.email, email_child,  z)
     return z
 
 
-count =0
+count = 0
 
 @bp.route('/child_email_required' , methods =('GET' , 'POST'))
 def child_email_required():
@@ -296,6 +295,98 @@ def update_child_passw():
 
     return render_template('auth/update_child_passw.html')
     
+
+
+# 27.09.2020
+
+
+@bp.route('/parent_email_required' , methods =('GET' , 'POST'))
+def parent_email_required():
+    if request.method == 'POST':
+        error = None
+        global parent_email 
+        global parent_username
+        parent_username = request.form['parent_username']
+        parent_email = request.form['parent_email']
+        db = get_db()
+        parent = db.execute('SELECT * FROM parent WHERE parent_username =?', (parent_username,)).fetchone()
+        if parent is None :
+             error = 'Incorrect Username'
+
+        global z 
+        z = gen_otp(parent_email)
+
+        flash(error)
+
+        return redirect(url_for('auth.parent_forget_passw'))
+        
+       
+
+    
+    return render_template('auth/parent_email_required.html')
+
+
+@bp.route('/parent_forget_passw' , methods =('GET' , 'POST'))
+def parent_forget_passw():
+    if request.method == 'POST':
+        parent_otp = request.form['parent_otp']
+        if(check(parent_otp)):
+            return redirect(url_for('auth.update_parent_passw'))
+        else :
+            global count
+            if count <= 4:
+                count = count + 1
+                
+                parent_forget_passw()
+            else :
+                return redirect(url_for('auth.parent_login'))
+    
+    return render_template('auth/parent_forget_passw.html')
+
+
+
+@bp.route('/update_parent_passw' , methods =('GET' , 'POST'))
+def update_parent_passw():
+    if request.method == 'POST':
+        new_passw  = request.form['new_passw']
+        confirm_passw = request.form['confirm_passw']
+        db = get_db()
+        error = None
+
+        if not new_passw:
+            error = 'Password  is required.'
+        if new_passw  != confirm_passw:
+            error = 'Password do not match'
+
+        else:
+            db.execute(
+                'UPDATE parent SET parent_password = ?'
+                ' WHERE parent_username = ?',
+                (generate_password_hash(confirm_passw) , parent_username)
+            )
+            db.commit()
+            return render_template('parent_index.html')
+        
+        flash(error)
+
+    return render_template('auth/update_parent_passw.html')
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

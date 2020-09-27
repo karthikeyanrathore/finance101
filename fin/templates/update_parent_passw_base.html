@@ -3,15 +3,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
   <h1 style="color:Black">Pocket Sense</h1>
-  <ul>
-    {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.parent_logout') }}">Log Out</a>
-    {% else %}
-      <li><a href="{{ url_for('auth.parent_register') }}">Register</a>
-      <li><a href="{{ url_for('auth.parent_login') }}">Log In</a>
-      <li><a href="{{ url_for('auth.parent_email_required') }}">Forget Password</a>
-    {% endif %}
+  <ul>    
+      <li><a href="{{ url_for('auth.update_parent_passw') }}">Update</a>
+        
   </ul>
 </nav>
 <section class="content">
