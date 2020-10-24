@@ -1,4 +1,6 @@
 
+
+<!--
 <!DOCTYPE html>
 <html>
 
@@ -7,9 +9,333 @@
   <meta charset="utf-8">
   <title>PocketSense</title>
 
-  <!-- CSS -->
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
  
+
+
+  
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+
+
+  <script src="https://use.fontawesome.com/539cc4d835.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <section id="title">
+
+   
+    <div class="container-fluid">
+
+
+
+      <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <a class="navbar-brand" href=""><i class="fa fa-product-hunt" aria-hidden="true"></i>ocket<i class="fa fa-scribd" aria-hidden="true"></i>ense</a>
+       
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <div class="dropdown show">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign up</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="{{ url_for('auth.child_register') }}">Child</a>
+                  <a class="dropdown-item" href="{{ url_for('auth.parent_register') }}">Parent</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown show">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign in</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="{{ url_for('auth.child_login') }}">Child</a>
+                  <a class="dropdown-item" href="{{ url_for('auth.parent_login') }}">Parent</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#features">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pricing">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+
+
+      
+      <div class="row">
+
+        <div class="col-lg-6">
+          <h1>Start saving Money today and Money will save you tomorrow!</h1>
+          <a type="button" class="btn btn-dark btn-lg download-btn" href="C:\Users\Aniket Purkayatha\Desktop\Web Development 1\PocketSense\Login_v1\index.html"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a>
+          <a type="button" class="btn btn-outline-light btn-lg download-btn" href="C:\Users\Aniket Purkayatha\Desktop\Web Development 1\PocketSense\Login_v1\index.html"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign in</a>
+        </div>
+        <div class="col-lg-6">
+          <img class="title-img w3-border" src="images/save5.jpg" alt="iphone-mockup">
+        </div>
+
+      </div>
+    </div>
+  
+
+  </section>
+
+
+
+
+  <section id="features">
+
+    <div class="row container-fluid">
+
+      <div class="feature-box f-1  col-lg-4">
+        <i class="fa fa-check-circle feature-img fa-5x" aria-hidden="true"></i>
+        <h3 class="f-head">Easy to use</h3>
+        <p class="f-p">Simple User Interface for the users to explore more.</p>
+      </div>
+
+      <div class="feature-box f-1 col-lg-4">
+        <i class="fa fa-inr feature-img fa-5x" aria-hidden="true"></i>
+        <h3 class="f-head">Save your Pocket Money</h3>
+        <p class="f-p">Save your money and use it efficiently.</p>
+      </div>
+
+      <div class="feature-box f-1 col-lg-4">
+        <i class="fa fa-check-square-o feature-img fa-5x" aria-hidden="true"></i>
+        <h3 class="f-head">Achieve your Goals</h3>
+        <p class="f-p">Save money for big purchases and fulfill your dreams.</p>
+      </div>
+
+      <div class="feature-box  col-lg-4">
+        <i class="fa fa-clock-o feature-img fa-5x" aria-hidden="true"></i>
+        <h3 class="f-head">Keep track of your money</h3>
+        <p class="f-p">See where you have spent your money and how much is saved.</p>
+      </div>
+
+      <div class="feature-box col-lg-4">
+        <i class="fa fa-users feature-img fa-5x" aria-hidden="true"></i>
+        <h3 class="f-head">Parental supervision</h3>
+        <p class="f-p">Parents can also keep track of their kid's money.</p>
+      </div>
+
+      <div class="feature-box col-lg-4">
+        <i class="fa fa-list feature-img fa-5x" aria-hidden="true"></i>
+        <h3 class="f-head">Set chores for your child</h3>
+        <p class="f-p">Parents can set up daily chores for their children along with bonus money.</p>
+      </div>
+
+    </div>
+
+
+  </section>
+
+ 
+
+  <section id="press">
+   
+    <img class="logo" src="images/tnw.png" alt="tnw-logo">
+    <img class="logo" src="images/bizinsider.png" alt="biz-insider-logo">
+    <img class="logo" src="images/mashable.png" alt="mashable-logo"> 
+    <h1>Why Saving is Important?</h1>
+
+  </section>
+
+
+
+
+  <section id="testimonials">
+
+    <div id="testimonial-carousel" class="carousel slide" data-ride="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <h2>"Do not save what is left after spending, but spend what is left after saving."</h2>
+          <img class="test-img" src="images/warren1.png" alt="dog-profile">
+          <em>Warren Buffett, Bussiness Tycoon</em>
+
+        </div>
+        <div class="carousel-item">
+          <h2 class="testimonial-text">"If you would be wealthy, think of saving as well as getting."</h2>
+          <img class="test-img" src="images/benjamin1.jpg" alt="lady-profile">
+          <em>Benjamin Franklin, American Polymath </em>
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+      </a>
+      <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+      </a>
+    </div>
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+  <section id="pricing">
+
+    <h2>About Us</h2>
+    <p class="price-p">PocketSense is designed and targeted for the usage of children so that they can manage their pocket money, align it with goals that they want
+      to achieve financially. This will help them inculcate the habit of financial planning, which is a critical skill that is needed by an individual as they
+      grow up. Be it an engineer, management graduate or any one from any walk of life, they will have to financially plan their expenditure after a certain
+      age. We, via PocketSense, we want to equip and instill these essential life skills into the minds of the individuals of tomorrow: the kids. PocketSense helps the
+      child to track the money he spent, the savings he needs to do and the amount that he needs to keep for contingencies. The parent will fix a monthly
+      allowance for the child and the application will advise as to how much money he/she should ideally save in order to achieve his/her goal.
+      The child can also choose the time frame within which the goal is intended to be completed.<br><br>
+      The problem it targets is lack of financial planning and monitoring funds on an individual level. Via PocketSense we want to equip and instill these
+       essential life skills into the minds of the individuals of the future. Regardless of whichever profession a person follows, managing personal finance
+       is an essential skill and requirement. This is a great way for parents to make their child financially conscious and be disciplined. Also, the setup and
+       the environment of this website application will be to mimic banking services. This solves one big problem among teenagers, which is understanding the banking system.
+       We have introduced feature of bonuses in this project; in this feature the parent can list certain jobs/chores that they want their child to
+       perform(household chores, grocery shopping etc.) and if the child performs those tasks, he/she will get some bonus money. Through this feature
+       the child will realize the worth of doing extra work and that it never goes to waste. </p>
+
+    <div class="card-deck row">
+
+      <div class="pricing-column col-lg-4 col-md-6">
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Chihuahua</h3>
+          </div>
+          <div class="card-body">
+            <h2>Free</h2>
+            <p class="price-p">5 Matches Per Day</p>
+            <p class="price-p">10 Messages Per Day</p>
+            <p class="price-p">Unlimited App Usage</p>
+            <button type="button" class="btn btn-lg btn-outline-dark btn-block">Sign Up</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pricing-column col-lg-4 col-md-6">
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Labrador</h3>
+          </div>
+          <div class="card-body">
+            <h2>$49 / mo</h2>
+            <p class="price-p">Unlimited Matches</p>
+            <p class="price-p">Unlimited Messages</p>
+            <p class="price-p">Unlimited App Usage</p>
+            <button type="button" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="pricing-column col-lg-4 col-md-12">
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Mastiff</h3>
+          </div>
+          <div class="card-body">
+            <h2>$99 / mo</h2>
+            <p class="price-p">Pirority Listing</p>
+            <p class="price-p">Unlimited Matches</p>
+            <p class="price-p">Unlimited Messages</p>
+            <p class="price-p">Unlimited App Usage</p>
+            <button type="button" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+          </div>
+        </div>
+
+      </div>
+    </div> 
+
+  </section>
+
+
+  
+
+  <section id="cta">
+
+    <h3 class="cta">Start your journey from here and make your dreams come true!</h3>
+    <a type="button" class="btn btn-dark btn-lg download-btn" href="C:\Users\Aniket Purkayatha\Desktop\Web Development 1\PocketSense\Login_v1\index.html"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a>
+    <a type="button" class="btn btn-outline-light btn-lg download-btn" href="C:\Users\Aniket Purkayatha\Desktop\Web Development 1\PocketSense\Login_v1\index.html"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign in</a>
+
+  </section>
+  
+
+
+  <footer id="footer">
+
+
+    <a href="https://twitter.com/account/access"><i class="fa fa-twitter footer-ic fa-lg" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/account/access"><i class="fa fa-facebook fa-lg " aria-hidden="true"></i></a>
+    <a href="https://twitter.com/account/access"><i class="fa fa-instagram footer-ic fa-lg" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/account/access"><i class="fa fa-envelope footer-ic fa-lg" aria-hidden="true"></i></a>
+
+    <p class="f-p">© Copyright 2020 PocketSense</p>
+
+  </footer>
+
+
+</body>
+
+</html>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>PocketSense</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 
   <!-- Google Fonts -->
@@ -84,7 +410,7 @@
 
 
 
-      <!-- Title 
+      <!-- Title -->
       <div class="row">
 
         <div class="col-lg-6">
@@ -93,12 +419,12 @@
           <a type="button" class="btn btn-outline-light btn-lg download-btn" href="C:\Users\Aniket Purkayatha\Desktop\Web Development 1\PocketSense\Login_v1\index.html"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign in</a>
         </div>
         <div class="col-lg-6">
-          <img class="title-img w3-border" src="images/save5.jpg" alt="iphone-mockup">
+         
+          <img class="title-img w3-border" src="{{url_for('static', filename='save5.jpg')}}" alt="iphone-mockup">
         </div>
 
       </div>
     </div>
-  --->
 
   </section>
 
@@ -170,13 +496,14 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <h2>"Do not save what is left after spending, but spend what is left after saving."</h2>
-          <img class="test-img" src="images/warren1.png" alt="dog-profile">
+          
+          <img class="test-img" src="{{url_for('static', filename='warren1.png')}}" alt="dog-profile">
           <em>Warren Buffett, Bussiness Tycoon</em>
 
         </div>
         <div class="carousel-item">
           <h2 class="testimonial-text">"If you would be wealthy, think of saving as well as getting."</h2>
-          <img class="test-img" src="images/benjamin1.jpg" alt="lady-profile">
+          <img class="test-img" src="{{url_for('static', filename='benjamin1.jpg')}}" alt="lady-profile">
           <em>Benjamin Franklin, American Polymath </em>
         </div>
 
@@ -279,7 +606,7 @@
   </section>
 
 
-  <!-- Call to Action 
+  <!-- Call to Action -->
 
   <section id="cta">
 
@@ -288,7 +615,7 @@
     <a type="button" class="btn btn-outline-light btn-lg download-btn" href="C:\Users\Aniket Purkayatha\Desktop\Web Development 1\PocketSense\Login_v1\index.html"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign in</a>
 
   </section>
-  --->
+
 
   <!-- Footer -->
 
