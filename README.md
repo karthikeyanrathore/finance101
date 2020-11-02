@@ -1,10 +1,10 @@
 
 # POCKET SENSE
 <p align="center">
-  <img src="https://raw.githubusercontent.com/karthikeyanrathore/finance101/master/docs/logo.png">
+  <img src="https://raw.githubusercontent.com/karthikeyanrathore/finance101/master/docs/logo.jpg">
 </p>
 
-
+--------------------------------------------------------------------
 # Requirements
 ```
 - Python 3.6.9
