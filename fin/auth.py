@@ -1,8 +1,6 @@
 import functools
-
 import sys
 import secret
-
 
 from flask import ( Blueprint ,flash , g ,  redirect , render_template  ,  request , session ,url_for)
 from werkzeug.security import check_password_hash , generate_password_hash
@@ -89,7 +87,7 @@ def load_logged_in_parent():
 @bp.route('/parent_logout')
 def parent_logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('auth.parent_login'))
 
 def parent_login_required(view):
     @functools.wraps(view)
@@ -161,7 +159,7 @@ def child_login():
             session.clear()
             session['child_id'] = child['child_id']
 
-            return render_template('child_index.html')
+            return redirect(url_for('goal.account'))
 
 
 
@@ -185,7 +183,7 @@ def load_logged_in_child():
 @bp.route('/child_logout')
 def child_logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('auth.child_login'))
 
 def child_login_required(view):
     @functools.wraps(view)
@@ -371,40 +369,6 @@ def update_parent_passw():
 
     return render_template('auth/update_parent_passw.html')
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-            
-
-
-
-
-
-
-
 
 
 

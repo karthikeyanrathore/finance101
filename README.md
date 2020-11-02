@@ -1,6 +1,7 @@
 
 # ~finance101~ POCKET SENSE
 
+
 # Requirements
 ```
 - Python 3.6.9
@@ -110,6 +111,8 @@
 - create a pull request
 
 ```
+
+# team
 
 
 

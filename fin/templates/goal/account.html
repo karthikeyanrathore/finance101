@@ -1,0 +1,34 @@
+{% extends 'child_base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Goal{% endblock %}</h1>
+  {% if g.child %}
+    <a class="action" href="{{ url_for('goal.create') }}">CREATE NEW GOAL</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for goal in goals %}
+    <article class="goal">
+      <header>
+        <div>
+          <h1>{{ goal['goal_name'] }}</h1>
+          <div class="about">by {{ goal['child_username'] }} on {{goal['created'].strftime('%Y-%m-%d')}} </div>
+        </div>
+        {% if g.child['child_id'] == goal['author_id'] %}
+          <a style = font-size:95%; class="action" href="{{ url_for('goal.update', goal_id=goal['goal_id']) }}">Edit</a>
+        {% endif %}
+      </header>
+      <p class="body">Income Amt : {{ goal['income_amt'] }}</p>
+      <p class="body">Goal Amt : {{ goal['goal_amt'] }}</p>
+      <p class="body">Saving Amt : {{ goal['saving_amt'] }}</p>
+      <p class="body">Emergeny Amt : {{ goal['emergency_amt'] }}</p>
+      <p class="body">Personal Amt : {{ goal['personal_amt'] }}</p>
+      <p class="body">Time Left : {{ goal['time_left'] }}</p>
+
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

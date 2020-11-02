@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS parent;
 DROP TABLE IF EXISTS child;
-
+DROP TABLE IF EXISTS goal;
 
 CREATE TABLE parent(
 	parent_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,3 +15,27 @@ CREATE TABLE child(
 	parent_email TEXT UNIQUE NOT NULL,
 	child_password TEXT NOT NULL
 );
+
+CREATE TABLE goal(
+	goal_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	author_id INTEGER NOT NULL,
+	
+	goal_name TEXT UNIQUE NOT NULL,
+	income_amt INTEGER NOT NULL,
+	goal_amt INTEGER NOT NULL,
+	saving_amt INTEGER NOT NULL,
+	emergency_amt INTEGER NOT NULL,
+	
+    time_left INTEGER NOT NULL,
+	personal_amt INTEGER NOT NULL,
+
+	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+	FOREIGN KEY (author_id) REFERENCES child (child_id)
+);
+
+
+
+
+
+

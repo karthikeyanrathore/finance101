@@ -1,0 +1,31 @@
+{% extends 'child_base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New GOAL{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+
+    <label for="GOAL NAME  ">GOAL NAME  </label>
+    <input name="goal_name" id="goal_name" required>
+   
+
+    <label for="INCOME">INCOME</label>
+    <input  name="income_amt" id="income_amt"  required>
+    
+    <label for="GOAL AMT">GOAL AMT</label>
+    <input name="goal_amt" id="goal_amt"  required>
+    
+    <label for="SAVING AMT ">SAVING AMT</label>
+    <input   name="saving_amt" id="saving_amt"  required>
+    
+    <label for="EMERGENCY AMT ">EMERGENCY AMT</label>
+    <input   name="emergency_amt" id="emergency_amt" required>
+   
+  
+ 
+    
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

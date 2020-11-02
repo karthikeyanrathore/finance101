@@ -4,8 +4,8 @@
 <nav>
   <h1 style="color:Black">Pocket Sense</h1>
   <ul>
-    {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
+    {% if g.child %}
+      <li><span>{{ g.child['child_username'] }}</span>
       <li><a href="{{ url_for('auth.child_logout') }}">Log Out</a>
     {% else %}      
       <li><a href="{{ url_for('auth.child_register') }}">Register</a>
