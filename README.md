@@ -1,5 +1,8 @@
 
-# ~finance101~ POCKET SENSE
+# POCKET SENSE
+<p align="center">
+  <img src="https://raw.githubusercontent.com/karthikeyanrathore/finance101/master/docs/logo.png">
+</p>
 
 
 # Requirements
