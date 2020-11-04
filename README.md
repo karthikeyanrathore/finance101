@@ -16,7 +16,7 @@
 
 **Mac or Linux**
 ```
-- fork repo (https://github.com/QuaranTEAM-code/finance101)
+- fork repo (https://github.com/karthikeyanrathore/finance101)
 - git clone https://github.com/{username}/finance101
 - cd finance101
 - python3 -m venv venv 
@@ -26,11 +26,12 @@
 - export FLASK_ENV=development
 - flask initdb
 - flask run
+- open  http://127.0.0.1:5000/home
 ```
 
 **Windows**
 ```
-  fork repo (https://github.com/QuaranTEAM-code/finance101)
+  fork repo (https://github.com/karthikeyanrathore/finance101)
 - cmd ( cd Dekstop)
 - git clone https://github.com/{username}/finance101
 -  py -3 -m venv venv (creating an V.Env && only created one Time)(**First Time**)
@@ -38,8 +39,7 @@
 - pip3 install flask
 - set FLASK_APP=fin
 - set FLASK_ENV=development
--  *before running our application .. initiate the database*
-- flask initdb (empty db)
+- flask initdb
 - flask run 
 - open  http://127.0.0.1:5000/home
 ```
@@ -71,14 +71,12 @@
 ├── instance
 └── README.md
 
-
-
-  ```
+```
 
 # Update (First Time)
 ```
 - git remote -v
-- git remote add upstream https://github.com/QuaranTEAM-code/finance101 (single time)
+- git remote add upstream https://github.com/karthikeyanrathore/finance101 (single time)
 - git fetch upstream
 - git checkout master
 - git merge upstream/master
