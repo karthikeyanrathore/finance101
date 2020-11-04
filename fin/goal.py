@@ -7,14 +7,77 @@ from fin.db import get_db
 bp = Blueprint('goal', __name__ , url_prefix ='/goal')
 
 
-@bp.route('/account')
+@bp.route('/account' ,  methods = ('GET' , 'POST'))
+@child_login_required
 def account():
     db = get_db()
+
+    
     goals = db.execute(
-            'SELECT go.goal_id , income_amt , goal_amt , saving_amt , emergency_amt , author_id , goal_name , child_username , time_left ,personal_amt, created '
+            'SELECT go.goal_id , income_amt , goal_amt , saving_amt , emergency_amt , author_id , goal_name , child_username , time_left ,personal_amt, created , bonus , counter '
             ' FROM goal go JOIN child c ON go.author_id = c.child_id'
             ' ORDER BY created DESC'
             ).fetchall()
+
+
+    from datetime import datetime
+
+    counter =0 
+    for x in goals:
+        counter += 1
+
+    for i in range(0 , counter):
+        #print(goals[i]['created'])
+        created_time = goals[i]['created']
+        today = datetime.today()
+        #created_time += 30
+
+
+        #print("MYSQL" , created_time.strftime('%Y-%m-%d'))
+        created_month = int(created_time.strftime('%m'))
+        created_date = int(created_time.strftime('%d'))
+        tracker = goals[i]['counter']
+
+        tracker += created_month
+
+        # print(created_time)
+        # print(today)
+
+        curr_month = int(today.strftime('%m'))
+        curr_date = int(today.strftime('%d'))
+
+        # DONE :UPDATE SAVING AMT for 1 year ONLY.
+
+        if(tracker != 12):
+            if (created_date == curr_date and tracker + 1  == curr_month):
+                # update saving acct  x2
+                saving_amt = goals[i]['saving_amt']
+                saving_amt += saving_amt
+                
+                tracker += 1
+                db.execute(
+                    'UPDATE goal SET saving_amt = ? ,counter = ? '
+                    ' WHERE created = ?',
+                    (saving_amt , tracker, created_time)
+                    )
+                db.commit()
+                    
+           
+        
+        else:
+            if (created_date == curr_date and curr_month == 1):
+                saving_amt = goals[i]['saving_amt']
+                saving_amt += saving_amt
+                
+                tracker = 1 - (created_month) 
+                db.execute(
+                    'UPDATE goal SET saving_amt = ? ,counter = ? '
+                    ' WHERE created = ?',
+                    (saving_amt , tracker, created_time)
+                    )
+                db.commit()
+               
+
     return render_template('goal/account.html' , goals=goals)
 
 
@@ -28,8 +91,10 @@ def create():
         saving_amt = int(request.form['saving_amt'])
         #print(saving_amt)
         emergency_amt = int(request.form['emergency_amt'])
-        
 
+        bonus = 0
+        tracker = 0 # counter
+        db = get_db()
 
         error = None
         time_left = 0
@@ -57,12 +122,15 @@ def create():
         else:
             db = get_db()
             db.execute(
-                    "INSERT INTO goal (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , author_id , time_left , personal_amt)"
-                    ' VALUES (? , ? , ? , ? , ? , ? , ? , ?)',
-                    (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , g.child['child_id'] ,time_left , personal_amt )
+                    "INSERT INTO goal (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , author_id , time_left , personal_amt , bonus , counter)"
+                    ' VALUES (? , ? , ? , ? , ? , ? , ? , ?, ?, ?)',
+                    (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , g.child['child_id'] ,time_left , personal_amt,bonus,tracker )
                     )
             db.commit()
+            #TT = db.execute('SELECT * FROM goal WHERE goal_name =?' , (goal_name, )).fetchone()
+            #print(TT['created'])
             return redirect(url_for('goal.account'))
+
 
     return render_template('goal/create.html')
 

@@ -26,13 +26,37 @@ CREATE TABLE goal(
 	saving_amt INTEGER NOT NULL,
 	emergency_amt INTEGER NOT NULL,
 	
+	bonus INTEGER NOT NULL,
     time_left INTEGER NOT NULL,
 	personal_amt INTEGER NOT NULL,
+	counter INTEGER,
 
 	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 	FOREIGN KEY (author_id) REFERENCES child (child_id)
 );
+
+/*
+TODO: CONNECT task with parent and goal 
+UPDATE task -> goal -> bonus - > time 
+*/
+
+/*
+CREATE TABLE task(
+	task_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	goal_author_id INTEGER NOT NULL,
+	author_id INTEGER NOT NULL,
+
+	task_name INTEGER NOT NULL,
+	task_amt INTEGER NOT NULL,
+
+	FOREIGN KEY (goal_author_id) REFERENCES goal (goal_id),
+	FOREIGN KEY (author_id) REFERENCES parent (parent_id),
+
+);
+
+*/
+
 
 
 

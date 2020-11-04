@@ -6,19 +6,19 @@
 
 {% block content %}
   <form method="post">
-    <label for="goal_name">Goal Name </label>
+    <label for="goal_name">GOAL NAME </label>
     <input name="goal_name" id="goal_name" value="{{ request.form['goal_name'] or goals['goal_name'] }}" required>
     
-    <label for="income_amt">income_amt</label>
+    <label for="income_amt">INCOME AMT PER MONTH</label>
     <input name="income_amt" id="income_amt" value = "{{ request.form['income_amt'] or goals['income_amt'] }}" required>
     
-    <label for="goal_amt">goal_amt</label>
+    <label for="goal_amt">GOAL AMT</label>
     <input name="goal_amt" id="goal_amt" value =  "{{ request.form['goal_amt'] or goals['goal_amt'] }}" required> 
     
-    <label for="saving_amt">saving_amt</label>
+    <label for="saving_amt">SAVING AMT PER MONTH</label>
     <input name="saving_amt" id="saving_amt" value = "{{ request.form['saving_amt'] or goals['saving_amt'] }}" required>
     
-    <label for="emergency_amt">emergency_amt</label>
+    <label for="emergency_amt">EMERGENCY AMT PER MONTH</label>
     <input name="emergency_amt" id="emergency_amt" value = "{{ request.form['emergency_amt'] or goals['emergency_amt'] }}" required>
     <input type="submit" value="Save">
     </form>
