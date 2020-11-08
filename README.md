@@ -74,6 +74,7 @@
 ```
 
 ### Update (First Time)
+
 ```
 - git remote -v
 - git remote add upstream https://github.com/karthikeyanrathore/finance101 (single time)
@@ -88,6 +89,7 @@
 
 
 ### Contribute
+
 ```
 - git add {new code added in file .file_name}
 - git commit -m "New Feature Added"
