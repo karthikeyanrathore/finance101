@@ -83,7 +83,9 @@
 - git merge upstream/master
 
 ------
+
 - git pull (**After above steps .. use git pull to update each time**)
+
 ```
 
 
@@ -99,6 +101,8 @@
 ```
 
 ### team
+
+
 
 
 
