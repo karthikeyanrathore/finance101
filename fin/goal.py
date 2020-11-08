@@ -27,7 +27,7 @@ def account():
         counter += 1
 
     for i in range(0 , counter):
-        #print(goals[i]['created'])
+       # print(goals[i]['created'])
         created_time = goals[i]['created']
         today = datetime.today()
         #created_time += 30

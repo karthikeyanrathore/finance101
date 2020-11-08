@@ -1,18 +1,17 @@
-
 # POCKET SENSE
 <p align="center">
   <img src="https://raw.githubusercontent.com/karthikeyanrathore/finance101/master/docs/logo.jpg">
 </p>
 
 --------------------------------------------------------------------
-# Requirements
+### Requirements
 ```
 - Python 3.6.9
 - Flask 1.1.2
 - Werkzeug 1.0.1
 ```
 
-# Install [Flask](https://flask.palletsprojects.com/en/1.1.x/installation/)
+### Install [Flask](https://flask.palletsprojects.com/en/1.1.x/installation/)
 
 **Mac or Linux**
 ```
@@ -44,7 +43,8 @@
 - open  http://127.0.0.1:5000/home
 ```
 
-# Structure 
+
+### Structure 
 ```
  .
 ├── finance101
@@ -73,7 +73,7 @@
 
 ```
 
-# Update (First Time)
+### Update (First Time)
 ```
 - git remote -v
 - git remote add upstream https://github.com/karthikeyanrathore/finance101 (single time)
@@ -87,7 +87,7 @@
 
 
 
-# Contribute
+### Contribute
 ```
 - git add {new code added in file .file_name}
 - git commit -m "New Feature Added"

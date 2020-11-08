@@ -196,7 +196,6 @@ def child_login_required(view):
     return wrapped_view
 
 
-# 19.09.2020
 
 
 def check(n):
@@ -294,8 +293,6 @@ def update_child_passw():
     return render_template('auth/update_child_passw.html')
     
 
-
-# 27.09.2020
 
 
 @bp.route('/parent_email_required' , methods =('GET' , 'POST'))
