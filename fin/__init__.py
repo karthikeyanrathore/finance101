@@ -36,5 +36,11 @@ def create_app(test_config =None):
         from . import goal 
         app.register_blueprint(goal.bp)
 
+        from . import task 
+        app.register_blueprint(task.bp)
+
+
+
+
 
         return app

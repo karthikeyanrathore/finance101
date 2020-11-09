@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}TASK{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for goal in goals%}
+    <article class="x">
+      <header>
+        <div>
+      
+          <a class="action" href="{{ url_for('task.create' , id=goal['goal_id']) }}">CREATE NEW TASK</a>
+          {% if goal['task_amt'] != 0 %}
+
+          <a class="action" href="{{ url_for('task.index')}}">BACK</a>
+          <h1>{{ goal['goal_name'] }}</h1>
+
+            <div class="about">by {{ goal['goal_name'] }}  </div>
+      </header>
+      <p class="body">TASK COUNT : {{ goal['task_count'] }}</p>
+     
+      <p class="body">TASK NAME : {{ goal['task_name'] }}</p>
+      <p class="body">TASK AMT  : {{ goal['task_amt'] }}</p>
+      <p class="body">TOAL BONUS AMT  : {{ goal['bonus'] }}</p>
+      <form action="{{ url_for('task.count', id=goal['goal_id']) }}" method="post">
+    <input class="danger" type="submit" value="DONE" onclick="return confirm('Are you sure?');">
+  </form>
+  {% endif %}
+       
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

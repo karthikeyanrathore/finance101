@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Goal{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for goal in goals %}
+    <article class="goal">
+      <header>
+        <div>
+          {% if g.parent['parent_id'] == goal['author_id'] %}
+              <h1>{{ goal['goal_name'] }}</h1>
+              <div class="about">by {{ goal['child_username'] }} </div>
+              <a style = font-size:95%; class="action" href="{{ url_for('task.display' , id=goal['goal_id'])}}">OPEN</a>
+              <p class="body">Goal Amt : {{ goal['goal_amt'] }}</p>
+              <p class="body">Saving Amt  : {{ goal['saving_amt'] }}</p>
+              <p class="body">Bonus Amt  : {{ goal['bonus'] }}</p>
+              <p class="body">Time Left  : {{ goal['time_left'] }}</p>
+      </header>
+      {% endif %} 
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

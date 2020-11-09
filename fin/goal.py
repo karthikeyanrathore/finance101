@@ -1,5 +1,7 @@
-from flask import (Blueprint, flash, g, redirect, render_template, request, url_for)
+from flask import (Blueprint, flash, g,session,  redirect, render_template, request, url_for)
 from werkzeug.exceptions import abort
+
+
 
 from fin.auth import child_login_required
 from fin.db import get_db
@@ -14,7 +16,7 @@ def account():
 
     
     goals = db.execute(
-            'SELECT go.goal_id , income_amt , goal_amt , saving_amt , emergency_amt , author_id , goal_name , child_username , time_left ,personal_amt, created , bonus , counter '
+            'SELECT go.goal_id , income_amt , goal_amt , saving_amt , emergency_amt , author_id , goal_name , child_username , time_left ,personal_amt, created , bonus , counter , goal_saving  , fix_saving_amt'
             ' FROM goal go JOIN child c ON go.author_id = c.child_id'
             ' ORDER BY created DESC'
             ).fetchall()
@@ -32,6 +34,9 @@ def account():
         today = datetime.today()
         #created_time += 30
 
+        goal_saving = goals[i]['goal_saving']
+
+        fix_saving_amt = goals[i]['fix_saving_amt']
 
         #print("MYSQL" , created_time.strftime('%Y-%m-%d'))
         created_month = int(created_time.strftime('%m'))
@@ -52,13 +57,15 @@ def account():
             if (created_date == curr_date and tracker + 1  == curr_month):
                 # update saving acct  x2
                 saving_amt = goals[i]['saving_amt']
-                saving_amt += saving_amt
                 
+                goal_saving += fix_saving_amt
+                saving_amt += saving_amt
+
                 tracker += 1
                 db.execute(
-                    'UPDATE goal SET saving_amt = ? ,counter = ? '
+                    'UPDATE goal SET saving_amt = ? ,counter = ?, goal_saving= ? '
                     ' WHERE created = ?',
-                    (saving_amt , tracker, created_time)
+                    (saving_amt , tracker,goal_saving, created_time)
                     )
                 db.commit()
                     
@@ -67,13 +74,15 @@ def account():
         else:
             if (created_date == curr_date and curr_month == 1):
                 saving_amt = goals[i]['saving_amt']
+               
+                goal_saving += fix_saving_amt
                 saving_amt += saving_amt
                 
                 tracker = 1 - (created_month) 
                 db.execute(
-                    'UPDATE goal SET saving_amt = ? ,counter = ? '
+                    'UPDATE goal SET saving_amt = ? ,counter = ?  , goal_saving=?'
                     ' WHERE created = ?',
-                    (saving_amt , tracker, created_time)
+                    (saving_amt , tracker, goal_saving ,created_time)
                     )
                 db.commit()
                
@@ -91,10 +100,16 @@ def create():
         saving_amt = int(request.form['saving_amt'])
         #print(saving_amt)
         emergency_amt = int(request.form['emergency_amt'])
+        goal_saving = 0
+        goal_saving += saving_amt
 
+        task_name = str(0)
+        task_count =0
+        task_amt = 0
         bonus = 0
         tracker = 0 # counter
         db = get_db()
+        fix_saving_amt = saving_amt
 
         error = None
         time_left = 0
@@ -122,9 +137,9 @@ def create():
         else:
             db = get_db()
             db.execute(
-                    "INSERT INTO goal (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , author_id , time_left , personal_amt , bonus , counter)"
-                    ' VALUES (? , ? , ? , ? , ? , ? , ? , ?, ?, ?)',
-                    (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , g.child['child_id'] ,time_left , personal_amt,bonus,tracker )
+                    "INSERT INTO goal (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , author_id , time_left , personal_amt , bonus , counter , task_name , task_amt , task_count ,goal_saving , fix_saving_amt)"
+                    ' VALUES (? , ? , ? , ? , ? , ? , ? , ?, ?, ? , ? , ? , ? , ? , ?)',
+                    (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , g.child['child_id'] ,time_left , personal_amt,bonus,tracker , task_name , task_amt , task_count , goal_saving , fix_saving_amt)
                     )
             db.commit()
             #TT = db.execute('SELECT * FROM goal WHERE goal_name =?' , (goal_name, )).fetchone()
@@ -139,7 +154,7 @@ def create():
 
 def get_goal(goal_id , check_author = True ):
     goals = get_db().execute(
-        'SELECT go.goal_id, income_amt , goal_amt , saving_amt , emergency_amt , author_id , goal_name , child_username , time_left ,personal_amt, created'
+        'SELECT go.goal_id, income_amt , goal_amt , saving_amt , emergency_amt , author_id , goal_name , child_username , time_left ,personal_amt, created , fix_saving_amt'
         ' FROM goal go JOIN child c ON go.author_id = c.child_id'
         ' WHERE go.goal_id = ?',
         (goal_id, )
@@ -205,9 +220,6 @@ def delete(goal_id):
     db.execute('DELETE FROM goal WHERE goal_id = ?', (goal_id,))
     db.commit()
     return redirect(url_for('goal.account'))
-
-
-
 
 
 

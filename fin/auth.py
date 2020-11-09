@@ -66,7 +66,8 @@ def parent_login():
         if error is None:
             session.clear()
             session['parent_id'] = parent['parent_id']
-            return render_template('parent_index.html')
+            return redirect(url_for('task.index'))
+
         flash(error)
 
     return render_template('auth/parent_login.html')

@@ -18,44 +18,37 @@ CREATE TABLE child(
 
 CREATE TABLE goal(
 	goal_id INTEGER PRIMARY KEY AUTOINCREMENT,
-	author_id INTEGER NOT NULL,
+	author_id INTEGER ,
+	task_author INTEGER,
+
+	goal_name TEXT UNIQUE ,
+	income_amt INTEGER ,
+	goal_amt INTEGER ,
+	goal_saving INTEGER,
+
+	fix_saving_amt INTEGER,
+	saving_amt INTEGER ,
+	emergency_amt INTEGER ,
 	
-	goal_name TEXT UNIQUE NOT NULL,
-	income_amt INTEGER NOT NULL,
-	goal_amt INTEGER NOT NULL,
-	saving_amt INTEGER NOT NULL,
-	emergency_amt INTEGER NOT NULL,
-	
-	bonus INTEGER NOT NULL,
-    time_left INTEGER NOT NULL,
-	personal_amt INTEGER NOT NULL,
+	bonus INTEGER ,
+    time_left INTEGER ,
+	personal_amt INTEGER ,
 	counter INTEGER,
 
-	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-	FOREIGN KEY (author_id) REFERENCES child (child_id)
-);
 
-/*
-TODO: CONNECT task with parent and goal 
-UPDATE task -> goal -> bonus - > time 
-*/
+	task_name  TEXT,
 
-/*
-CREATE TABLE task(
-	task_id INTEGER PRIMARY KEY AUTOINCREMENT,
-	goal_author_id INTEGER NOT NULL,
-	author_id INTEGER NOT NULL,
-
-	task_name INTEGER NOT NULL,
-	task_amt INTEGER NOT NULL,
-
-	FOREIGN KEY (goal_author_id) REFERENCES goal (goal_id),
-	FOREIGN KEY (author_id) REFERENCES parent (parent_id),
+	task_amt INTEGER,
+	task_count INTEGER,
+	
+	FOREIGN KEY (author_id) REFERENCES child (child_id),
+	
+	FOREIGN KEY (task_author) REFERENCES parent (parent_id)
 
 );
 
-*/
 
 
 

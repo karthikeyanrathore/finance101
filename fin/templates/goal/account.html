@@ -14,16 +14,15 @@
         <div>
           {% if g.child['child_id'] == goal['author_id'] %}
           <h1>{{ goal['goal_name'] }}</h1>
-          <div class="about">by {{ goal['child_username'] }} on {{goal['created'].strftime('%Y-%m-%d')}} </div>
-        </div>
-          <a style = font-size:95%; class="action" href="{{ url_for('goal.update', goal_id=goal['goal_id']) }}">Edit</a>
-        {% endif %}
+            <div class="about">by {{ goal['child_username'] }} on {{goal['created'].strftime('%Y-%m-%d')}} </div>
+            <a style = font-size:95%; class="action" href="{{ url_for('goal.update', goal_id=goal['goal_id']) }}">Edit</a>
       </header>
       <p class="body">Goal Amt : {{ goal['goal_amt'] }}</p>
-      <p class="body">Saving Amt  : {{ goal['saving_amt'] }}</p>
-      <p class="body">Bonus Amt  : {{ goal['bonus'] }}</p>
+      <p class="body">TOTAL GOAL Saving Amt  : {{ goal['goal_saving'] }}</p>
+      <p class="body">Saving Amt PER  MONTH  : {{ goal['fix_saving_amt'] }}</p>
+      <p class="body">TOAL Bonus Amt  : {{ goal['bonus'] }}</p>
       <p class="body">Time Left  : {{ goal['time_left'] }}</p>
-
+      {% endif %} 
     </article>
     {% if not loop.last %}
       <hr>
