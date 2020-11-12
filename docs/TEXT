@@ -1,0 +1,19 @@
+Code Sharing and storage: Our Web based project will be stored in github repository where we will be sharing code among team members.
+
+Project Assignment: for assigning work to each member for the particular week , we will be using Github wiki feature.
+
+Issue Assignment : If there is any bug/error in the code , the team leader or owner of the github repo will assign the issue to the team member.
+
+Continuous Integration: Any changes such as any feature added to the github repo will affect the Heroku application which is hosting our application.
+
+
+
+
+
+
+
+
+
+
+ 
+

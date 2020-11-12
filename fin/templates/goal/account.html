@@ -256,7 +256,9 @@
            
             <div class="card-body">
               {% if g.child['child_id'] == goal['author_id'] %}
+              
                 <h2>{{ goal['goal_name'] }}</h2>
+                 <a style = font-size:95%; color: #1fab89 ;class="action" href="{{ url_for('goal.update', goal_id=goal['goal_id']) }}">Edit</a>
                 <p class="price-p">Goal Amount: {{ goal['goal_amt'] }}</p>
                 <p class="price-p">Total Goal savings: {{ goal['goal_saving'] }}</p>
                 <p class="price-p">Total Bonus : {{ goal['bonus'] }}</p>
