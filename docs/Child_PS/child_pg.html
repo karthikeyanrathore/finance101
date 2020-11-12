@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Child</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="C_css/c_styles.css">
+
+
+  <!-- Google Fonts -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+
+  <!-- Font Awesome -->
+  <script src="https://use.fontawesome.com/539cc4d835.js"></script>
+  <!--Apple and google play icons-->
+
+  <!-- Bootstrap scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <section id="main">
+
+
+
+  <div class="container-fluid">
+    <!-- <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+      <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Account</a>
+      <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> Transactions</a>
+      <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Tasks</a>
+      <a href="#"><i class="fa fa-inr" aria-hidden="true"></i> Savings</a>
+
+    </div>
+    <span class="op" style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; OPEN</span> -->
+    <section id="first">
+
+
+
+
+
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Account Details</a>
+        <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> Transactions</a>
+        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Tasks</a>
+        <a href="#"><i class="fa fa-inr" aria-hidden="true"></i> Savings</a>
+
+      </div>
+
+
+      <div id="main">
+
+        <nav class="navbar navbar-light" style="background-color: #1fab89;">
+
+
+          <a class="navbar-brand" href=""><i class="fa fa-product-hunt" aria-hidden="true"></i>ocket<i class="fa fa-scribd" aria-hidden="true"></i>ense</a>
+
+
+
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+              {% if g.child %}
+              <li><span>{{ g.child['child_username'] }}</span>
+              <li><a style = color:#1fab89;text-decoration:none; href="{{ url_for('auth.child_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+              <!--<a class="nav-link" href=""><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>-->
+              {% else %}
+            </li>
+
+          </ul>
+
+
+
+        </nav>
+
+        <span class="op" style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; OPEN</span>
+
+
+        <h2 class="title">WELCOME TO YOUR ACCOUNT</h2>
+
+        <!-- <i class="fa fa-money fa-5x" aria-hidden="true"></i> -->
+
+        <!-- <span class="op" style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; OPEN</span> -->
+      </div>
+
+
+      <!-- <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("main").style.marginLeft = "250px";
+          document.body.style.backgroundColor = "#deecff";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          document.getElementById("main").style.marginLeft = "0";
+          document.body.style.backgroundColor = "white";
+        }
+      </script> -->
+
+
+    </section>
+
+    <section id='second'>
+
+      <h2 class="title_goal">SAVING DETAILS</h2>
+
+      <div class="card w-50 text-center">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body" style="align:center;">
+          <h5 class="card-title">YOUR TOTAL SAVINGS</h5>
+          <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i>50000</p>
+
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+      </div>
+
+
+
+      <div class="card w-50 text-center">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body" style="align:center;">
+          <h5 class="card-title">YOUR PERSONAL SAVINGS</h5>
+          <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i>25000</p>
+
+        </div>
+        <div class="card-footer text-muted">
+
+        </div>
+      </div>
+
+
+      <div class="card w-50 text-center">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body" style="align:center;">
+          <h5 class="card-title">YOUR EMERGENCY SAVINGS</h5>
+          <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i>12000</p>
+
+        </div>
+        <div class="card-footer text-muted">
+
+        </div>
+      </div>
+
+
+
+      <div class="card w-50 text-center">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body" style="align:center;">
+          <h5 class="card-title">YOUR TOTAL BONUS</h5>
+          <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i>2000</p>
+
+        </div>
+        <div class="card-footer text-muted">
+
+        </div>
+      </div>
+
+
+    </section>
+
+
+    <section id="third">
+
+      <h2 class="title_goal">YOUR GOALS</h2>
+
+      <a class="add1" href=""><i class="fa fa-plus-circle" aria-hidden="true"></i> ADD GOAL</a>
+
+
+
+      <div class="card-deck row">
+
+        <div class="pricing-column col-lg-4 col-md-6">
+
+          <div class="card">
+
+              <!-- <center> -->
+              <i class="fa fa-ch fa-check-circle-o " aria-hidden="true"></i>
+            <!-- </center> -->
+            <div class="card-body">
+              <h2>Bicycle</h2>
+              <p class="price-p">Goal Amount:</p>
+              <p class="price-p">Goal savings:</p>
+              <p class="price-p">Due Date:</p>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="pricing-column col-lg-4 col-md-6">
+
+          <div class="card">
+
+            <i class="fa fa-ch fa-check-circle-o" aria-hidden="true"></i>
+            <div class="card-body">
+              <h2>Headphone</h2>
+              <p class="price-p">Goal Amount:</p>
+              <p class="price-p">Goal savings:</p>
+              <p class="price-p">Due Date:</p>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="pricing-column col-lg-4 col-md-12">
+
+          <div class="card">
+
+            <i class="fa fa-ch fa-check-circle-o" aria-hidden="true"></i>
+            <div class="card-body">
+              <h2>Phone</h2>
+              <p class="price-p">Goal Amount:</p>
+              <p class="price-p">Goal savings:</p>
+              <p class="price-p">Due Date:</p>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <footer id="footer">
+
+
+      <a href="https://twitter.com/account/access"><i class="fa fa-twitter footer-ic fa-lg" aria-hidden="true"></i></a>
+      <a href="https://twitter.com/account/access"><i class="fa fa-facebook footer-ic fa-lg " aria-hidden="true"></i></a>
+      <a href="https://twitter.com/account/access"><i class="fa fa-instagram footer-ic fa-lg" aria-hidden="true"></i></a>
+      <a href="https://twitter.com/account/access"><i class="fa fa-envelope footer-ic fa-lg" aria-hidden="true"></i></a>
+
+      <p class="f-p">© Copyright 2020 PocketSense</p>
+
+    </footer>
+
+
+  </div>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+      document.body.style.backgroundColor = "#deecff";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+      document.body.style.backgroundColor = "white";
+    }
+  </script>
+
+</section>
+
+</body>
+
+</html>
