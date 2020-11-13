@@ -160,7 +160,7 @@ def child_login():
             session.clear()
             session['child_id'] = child['child_id']
 
-            return redirect(url_for('goal.account'))
+            return redirect(url_for('goal.create'))
 
 
 

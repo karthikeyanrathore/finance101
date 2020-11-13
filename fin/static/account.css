@@ -82,9 +82,9 @@ body {
 .card{
   margin: 0 auto; /* Added */
         float: none; /* Added */
-        margin-bottom: 30px; /* Added */
+        /*margin-bottom: 30px; /* Added */
         /* border-radius: 20% */
-        padding-bottom: 200px;
+        /*padding-bottom: 200px;*/
 
 }
 .card-header {

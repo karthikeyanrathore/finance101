@@ -1,54 +1,5 @@
-<!--
 
 
-{% block header %}
-  <h1 style="color: #1fab89">{% block title %}WELCOME TO YOUR ACCOUNT{% endblock %}</h1>
-  {% if g.child %}
-    <a class="action" href="{{ url_for('goal.create') }}">CREATE NEW GOAL</a>
-  {% endif %}
-{% endblock %}
-
-
-
-
-
-
-
-
-{% block content %}
- <article class="goal">
-    <p class="body">Goal Amt : {{ goals[0]['goal_amt'] }}</p>
-    <p class="body">TOTAL GOAL Saving Amt  : {{ goals[0]['goal_saving'] }}</p>
-    <p class="body">Saving Amt PER  MONTH  : {{ goals[0]['fix_saving_amt'] }}</p>
-    <p class="body">TOAL Bonus Amt  : {{ goals[0]['bonus'] }}</p>
-    <p class="body">Time Left  : {{ goals[0]['time_left'] }}</p>
-  
-  </article>
-
-  {% for goal in goals %}
-    <article class="goal">
-      <header>
-        <div>
-          {% if g.child['child_id'] == goal['author_id'] %}
-          <h1>{{ goal['goal_name'] }}</h1>
-            <div class="about">by {{ goal['child_username'] }} on {{goal['created'].strftime('%Y-%m-%d')}} </div>
-            <a style = font-size:95%; class="action" href="{{ url_for('goal.update', goal_id=goal['goal_id']) }}">Edit</a>
-      </header>
-      <p class="body">Goal Amt : {{ goal['goal_amt'] }}</p>
-      <p class="body">TOTAL GOAL Saving Amt  : {{ goal['goal_saving'] }}</p>
-      <p class="body">Saving Amt PER  MONTH  : {{ goal['fix_saving_amt'] }}</p>
-      <p class="body">TOAL Bonus Amt  : {{ goal['bonus'] }}</p>
-      <p class="body">Time Left  : {{ goal['time_left'] }}</p>
-      {% endif %} 
-    </article>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
-  {% endfor %}
-{% endblock %}
-
-
--->
 
 
 
@@ -144,8 +95,13 @@
         <span class="op" style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; OPEN</span>
 
          {% if g.child %}
+          
         <h2 class="title">Welcome {{ g.child['child_username'] }}</h2>
+       
         {% endif %}
+
+            
+        
 
         <!-- <i class="fa fa-money fa-5x" aria-hidden="true"></i> -->
 
@@ -167,11 +123,11 @@
         }
       </script> -->
 
-
     </section>
+  
 
     <section id='second'>
-
+     
       <h2 class="title_goal">ACCOUNT DETAILS</h2>
 
       <div class="card w-50 text-center">
@@ -235,7 +191,9 @@
       </div>
 
 
+
     </section>
+    
 
 
     <section id="third">
@@ -251,6 +209,8 @@
       <div class="card-deck row">
           {% for goal in goals %}
           {% if g.child['child_id'] == goal['author_id'] %}
+          
+
         <div class="pricing-column col-lg-4 col-md-6">
           
             
@@ -281,6 +241,7 @@
           </div>
          
         </div>
+         
          {% endif %} 
          {% endfor %}
 
