@@ -27,7 +27,7 @@ def get_goal(id, check_author=True):
 def index():
     db = get_db()
     goals = db.execute(
-        'SELECT go.goal_id , child_username , goal_amt , goal_name , saving_amt , bonus , time_left , author_id '
+        'SELECT go.goal_id , child_username , goal_amt , goal_name , saving_amt , bonus , time_left , author_id , goal_saving'
         ' FROM goal go JOIN child u ON go.author_id = u.child_id'
         ' ORDER BY created DESC'
     ).fetchall()

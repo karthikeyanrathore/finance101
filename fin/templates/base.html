@@ -5,9 +5,10 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='util.css') }}">
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<script src="https://use.fontawesome.com/539cc4d835.js"></script>
 
 <nav>
-  <h1 style="color :black">Pocket Sense</h1>
+  <h1></h><a style="color: #1fab89" href="{{ url_for('home') }}"><i class="fa fa-product-hunt" aria-hidden="true"></i>ocket<i class="fa fa-scribd" aria-hidden="true"></i>ense</a></h1>
   <ul>
     {% if g.parent %}
       <li><span>{{ g.parent['parent_username'] }}</span>
