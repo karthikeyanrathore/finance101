@@ -21,7 +21,7 @@
       <p class="body">TASK COUNT : {{ goal['task_count'] }}</p>
      
       <p class="body">TASK NAME : {{ goal['task_name'] }}</p>
-      <p class="body">TASK AMT  : {{ goal['task_amt'] }}</p>
+      <p class="body">TASK BONUS  : {{ goal['task_amt'] }}</p>
       <p class="body">TOAL BONUS AMT  : {{ goal['bonus'] }}</p>
       <form action="{{ url_for('task.count', id=goal['goal_id']) }}" method="post">
     <input class="danger" type="submit" value="DONE" onclick="return confirm('Are you sure?');">

@@ -147,15 +147,18 @@
       <h2 class="title_goal">GOALS</h2>
   
 
-       {% for goal in goals %}
+      
       <div class="card-deck row">
+         {% for goal in goals %}
+         {% if g.parent['parent_id'] == goal['author_id'] %}
          
         <div class="pricing-column col-lg-4 col-md-6">
           
           <div class="card">
            
             <div class="card-body">
-             {% if g.parent['parent_id'] == goal['author_id'] %}
+            
+                 <i class="fa fa-ch fa-check-circle-o" aria-hidden="true"></i>
               
                 <h2>{{ goal['goal_name'] }}</h2>
                  <a style = font-size:95%; class="action" href="{{ url_for('task.display' , id=goal['goal_id'])}}">OPEN</a>
@@ -163,7 +166,7 @@
                 <p class="price-p">Total Goal savings: {{ goal['goal_saving'] }}</p>
                 <p class="price-p">Total Bonus : {{ goal['bonus'] }}</p>
                 <p class="price-p">Time left: {{ goal['time_left'] }}</p>
-              {% endif %} 
+              
             
 
              
@@ -174,12 +177,14 @@
           
 
         </div>
+           {% endif %} 
+            {% endfor %}
      
 
     
 
       </div>
-        {% endfor %}
+       
 
     </section>
 

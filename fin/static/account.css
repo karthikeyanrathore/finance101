@@ -84,6 +84,7 @@ body {
         float: none; /* Added */
         margin-bottom: 30px; /* Added */
         /* border-radius: 20% */
+        padding-bottom: 200px;
 
 }
 .card-header {
@@ -97,7 +98,7 @@ body {
 }
 
 .fa-ch {
-  /* text-align: center; */
+  text-align: center; 
   margin: auto;
   font-size: 13em !important;
 }
