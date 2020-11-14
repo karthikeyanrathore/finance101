@@ -131,7 +131,7 @@ def  child_register():
         if error is None:
             db.execute('INSERT INTO child (child_username , parent_email ,child_password) VALUES (? ,? , ?)' , (child_username , parent_email , generate_password_hash(child_password)))
             db.commit()
-            return redirect(url_for('auth.child_login'))
+            return redirect(url_for('goal.first_create'))
 
         flash(error)
 
@@ -160,7 +160,7 @@ def child_login():
             session.clear()
             session['child_id'] = child['child_id']
 
-            return redirect(url_for('goal.create'))
+            return redirect(url_for('goal.account'))
 
 
 
@@ -195,6 +195,18 @@ def child_login_required(view):
         return view(**kwargs)
 
     return wrapped_view
+
+def child_register_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.child is None:
+            return redirect(url_for('auth.child_register'))
+
+        return view(**kwargs)
+
+    return wrapped_view
+
+
 
 
 

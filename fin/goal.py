@@ -4,6 +4,7 @@ from werkzeug.exceptions import abort
 
 
 from fin.auth import child_login_required
+from fin.auth import child_register_required
 from fin.db import get_db
 
 bp = Blueprint('goal', __name__ , url_prefix ='/goal')
@@ -220,6 +221,69 @@ def delete(goal_id):
     db.execute('DELETE FROM goal WHERE goal_id = ?', (goal_id,))
     db.commit()
     return redirect(url_for('goal.account'))
+
+
+
+
+@bp.route('/first_create' , methods = ('GET' , 'POST'))
+@child_register_required
+def first_create():
+    if request.method == 'POST':
+        income_amt = int(request.form['income_amt'])
+        goal_amt = int(request.form['goal_amt'])
+        goal_name = (request.form['goal_name'])
+        saving_amt = int(request.form['saving_amt'])
+        #print(saving_amt)
+        emergency_amt = int(request.form['emergency_amt'])
+        goal_saving = 0
+        goal_saving += saving_amt
+
+        task_name = str(0)
+        task_count =0
+        task_amt = 0
+        bonus = 0
+        tracker = 0 # counter
+        db = get_db()
+        fix_saving_amt = saving_amt
+
+        error = None
+        time_left = 0
+        personal_amt = income_amt - (saving_amt + emergency_amt)
+
+        if(income_amt < saving_amt):
+            error = "Income Amount has to be greater than Saving Amount"
+
+        if(income_amt < emergency_amt):
+            error = "Income Amount has to be greater than Emergency Amount"
+
+        db = get_db()
+
+        if not goal_name:
+            error = "GOAL NAME REQUIRED"
+
+        elif db.execute(
+                'SELECT goal_id FROM goal WHERE goal_name = ?',(goal_name,)).fetchone() is not None:
+                error = 'Goal  {} is already registered'.format(goal_name)
+    
+
+        if error is not None:
+            flash(error)
+
+        else:
+            db = get_db()
+            db.execute(
+                    "INSERT INTO goal (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , author_id , time_left , personal_amt , bonus , counter , task_name , task_amt , task_count ,goal_saving , fix_saving_amt)"
+                    ' VALUES (? , ? , ? , ? , ? , ? , ? , ?, ?, ? , ? , ? , ? , ? , ?)',
+                    (income_amt , goal_amt , goal_name , saving_amt , emergency_amt , g.child['child_id'] ,time_left , personal_amt,bonus,tracker , task_name , task_amt , task_count , goal_saving , fix_saving_amt)
+                    )
+            db.commit()
+            #TT = db.execute('SELECT * FROM goal WHERE goal_name =?' , (goal_name, )).fetchone()
+            #print(TT['created'])
+            return redirect(url_for('goal.account'))
+
+
+    return render_template('goal/create.html')
+
 
 
 
