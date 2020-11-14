@@ -4,7 +4,7 @@ from werkzeug.exceptions import abort
 
 
 from fin.auth import child_login_required
-from fin.auth import child_register_required
+from fin.auth import first_child_login_required
 from fin.db import get_db
 
 bp = Blueprint('goal', __name__ , url_prefix ='/goal')
@@ -226,7 +226,7 @@ def delete(goal_id):
 
 
 @bp.route('/first_create' , methods = ('GET' , 'POST'))
-@child_register_required
+@first_child_login_required
 def first_create():
     if request.method == 'POST':
         income_amt = int(request.form['income_amt'])

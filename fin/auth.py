@@ -131,7 +131,7 @@ def  child_register():
         if error is None:
             db.execute('INSERT INTO child (child_username , parent_email ,child_password) VALUES (? ,? , ?)' , (child_username , parent_email , generate_password_hash(child_password)))
             db.commit()
-            return redirect(url_for('goal.first_create'))
+            return redirect(url_for('auth.first_child_login'))
 
         flash(error)
 
@@ -168,6 +168,57 @@ def child_login():
 
     return render_template('auth/child_login.html')
 
+
+
+
+@bp.route('/first_child_login' , methods =('GET' , 'POST'))
+def first_child_login():
+    if request.method == 'POST':
+        child_username = request.form['child_username']
+        child_password = request.form['child_password']
+        db = get_db()
+
+        error = None
+        child = db.execute('SELECT * FROM child WHERE child_username =?', (child_username,)).fetchone()
+
+
+
+        if child is None :
+            error = 'Incorrect username.'
+        elif not check_password_hash(child['child_password'] , child_password):
+            error = "incorret password"
+
+        if error is None:
+            session.clear()
+            session['child_id'] = child['child_id']
+
+            return redirect(url_for('goal.first_create'))
+
+
+
+        flash(error)
+
+    return render_template('auth/child_login.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @bp.before_app_request
 def load_logged_in_child():
     child_id = session.get('child_id')
@@ -196,11 +247,11 @@ def child_login_required(view):
 
     return wrapped_view
 
-def child_register_required(view):
+def first_child_login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.child is None:
-            return redirect(url_for('auth.child_register'))
+            return redirect(url_for('auth.first_child_login'))
 
         return view(**kwargs)
 
