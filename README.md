@@ -3,6 +3,9 @@
   <img src="https://raw.githubusercontent.com/karthikeyanrathore/finance101/master/docs/logo.jpg">
 </p>
 
+### Youtube Vid
+- https://youtu.be/yoMEsTs1eFo
+
 --------------------------------------------------------------------
 ### Requirements
 ```
