@@ -350,7 +350,7 @@ def update_child_passw():
                 (generate_password_hash(confirm_passw) , child_username)
             )
             db.commit()
-            return render_template('child_index.html')
+            return redirect(url_for('auth.child_login'))
         
         flash(error)
 
@@ -423,9 +423,9 @@ def update_parent_passw():
                 ' WHERE parent_username = ?',
                 (generate_password_hash(confirm_passw) , parent_username)
             )
-            db.commit()
-            return render_template('parent_index.html')
-        
+            db.commit() 
+            return redirect(url_for('auth.parent_login'))
+
         flash(error)
 
     return render_template('auth/update_parent_passw.html')

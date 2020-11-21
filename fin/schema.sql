@@ -31,7 +31,7 @@ CREATE TABLE goal(
 	emergency_amt INTEGER ,
 	
 	bonus INTEGER ,
-    time_left INTEGER ,
+    time_left TEXT ,
 	personal_amt INTEGER ,
 	counter INTEGER,
 

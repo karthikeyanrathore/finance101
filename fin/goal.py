@@ -9,6 +9,21 @@ from fin.db import get_db
 
 bp = Blueprint('goal', __name__ , url_prefix ='/goal')
 
+import datetime
+def month_remaining(year,month,day,hour,minute,sec):
+    create=datetime.datetime(year,month,day,hour,minute,sec)
+    now=datetime.datetime.now()
+    m=abs(now-create)
+    return(m.days//30.5)
+    
+def time(year,month,day,hour,minute,sec,savings,goal):
+    m_1=month_remaining(year,month,day,hour,minute,sec)
+    m_2=goal//savings
+    if goal%savings!=0:
+        m_2=m_2+1
+    return(m_2-m_1)
+
+
 
 @bp.route('/account' ,  methods = ('GET' , 'POST'))
 @child_login_required
@@ -36,22 +51,49 @@ def account():
         #created_time += 30
 
         goal_saving = goals[i]['goal_saving']
+        goal_amt = goals[i]['goal_amt']
 
         fix_saving_amt = goals[i]['fix_saving_amt']
 
         #print("MYSQL" , created_time.strftime('%Y-%m-%d'))
         created_month = int(created_time.strftime('%m'))
+        created_year = int(created_time.strftime('%Y'))
         created_date = int(created_time.strftime('%d'))
         tracker = goals[i]['counter']
 
         tracker += created_month
+        #print(created_year)
 
+        #print(created_month)
+        #print(created_date)
         # print(created_time)
         # print(today)
-
+        Hour = int(created_time.strftime('%H'))
+        
+        #print(Hour)
+        Sec = int(created_time.strftime('%S'))
+        Min = int(created_time.strftime('%M'))
+        
+        #print(Sec)
+        #print(Min)
         curr_month = int(today.strftime('%m'))
         curr_date = int(today.strftime('%d'))
 
+        time_left = goals[i]['time_left']
+
+        time_left = time(created_year, created_month , created_date ,Hour , Min , Sec , fix_saving_amt ,goal_amt)
+
+        #print(time_left)
+        time_left = str(abs(time_left))
+        print(time_left)
+        db.execute(
+                'UPDATE goal SET time_left = ?'
+                ' WHERE created = ?',
+                (time_left , created_time)
+                )
+        db.commit()
+
+        
         # DONE :UPDATE SAVING AMT for 1 year ONLY.
 
         if(tracker != 12):
