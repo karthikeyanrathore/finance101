@@ -164,7 +164,7 @@ def create():
         if(income_amt < emergency_amt):
             error = "Income Amount has to be greater than Emergency Amount"
 
-        db = get_db()
+		db = get_db()
 
         if not goal_name:
             error = "GOAL NAME REQUIRED"

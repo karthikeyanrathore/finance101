@@ -202,23 +202,6 @@ def first_child_login():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @bp.before_app_request
 def load_logged_in_child():
     child_id = session.get('child_id')
