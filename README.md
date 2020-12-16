@@ -104,4 +104,9 @@
 
 ```
 
-### Team
+### Team Members
+- Aniket Purkayastha
+- Karthikeyan Rathore
+- Anrup Sharma
+- Asfahan shah
+
