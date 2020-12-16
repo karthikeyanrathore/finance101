@@ -72,7 +72,7 @@ open  http://127.0.0.1:5000/home
 
 ```
 
-### Update (First Time)
+### Update
 
 ```
 git remote -v
@@ -80,7 +80,7 @@ git remote add upstream https://github.com/karthikeyanrathore/finance101 (single
 git fetch upstream
 git checkout master
 git merge upstream/master
-git pull (**After above steps .. use git pull to update each time**)
+git pull 
 
 ```
 
